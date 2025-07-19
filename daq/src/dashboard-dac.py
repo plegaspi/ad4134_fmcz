@@ -19,7 +19,6 @@ app.layout = html.Div(
             id="dashboard-tabs",
             value="live-view",
             children=[
-                dcc.Tab(label="Control Panel", value="control-panel"),
                 dcc.Tab(label="Live View", value="live-view"),
             ],
         ),
@@ -44,7 +43,6 @@ def render_dashboard_content(tab):
     else:
         return html.Div(
             [
-                html.P("Test 1"),
                 dcc.Graph(id="live-view-graphs"),
                 dcc.Interval(id="live-view-interval", interval=1 * 1000, n_intervals=0),
             ]

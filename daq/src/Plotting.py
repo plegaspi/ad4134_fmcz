@@ -111,15 +111,14 @@ class Overview:
         return fig
 
 
-import numpy as np
-from scipy.signal import decimate
-import plotly.graph_objects as go
-
-
 class DacTestLiveView:
     def __init__(self, file_name, decimation_factor=1):
         self.file_name = file_name
         self.decimation_factor = decimation_factor
+
+    def fit(self, dac_ds, adc_ds):
+        slope, intercept = np.polyfit(dac_ds, adc_ds, 1)
+        return slope, intercept
 
     def create_live_plots(self):
         reader = DAC_Reader(self.file_name)
@@ -127,11 +126,12 @@ class DacTestLiveView:
         dac, adc, se = reader.live_view_data()
         reader.close()
 
+        # no raw data at all?  show placeholder
         if len(dac) == 0:
             return go.Figure().update_layout(title="No data yet")
 
+        # downsample
         df = max(1, self.decimation_factor)
-
         if df > 1 and len(dac) > 27:
             dac_ds = decimate(dac, df)
             adc_ds = decimate(adc, df)
@@ -141,13 +141,19 @@ class DacTestLiveView:
             adc_ds = adc[::df]
             se_ds = se[::df]
 
+        order = np.argsort(dac_ds)
+
+        dac_ds = dac_ds[order]
+        adc_ds = adc_ds[order]
+        se_ds = se_ds[order]
         trace = go.Scattergl(
             x=dac_ds,
             y=adc_ds,
-            customdata=se_ds,  # attach SEM values
+            customdata=se_ds,
             mode="markers+lines",
             name="ADC vs DAC",
-            error_y=dict(type="data", array=se_ds, visible=True),
+            marker=dict(size=1),
+            error_y=dict(type="data", array=se_ds, visible=True, width=1),
             hovertemplate=(
                 "DAC: %{x:.6f} V<br>"
                 "ADC: %{y:.6f} V<br>"
@@ -156,13 +162,39 @@ class DacTestLiveView:
             ),
         )
 
-        fig = go.Figure(trace)
+        if len(dac_ds) < 2:
+            fig = go.Figure([trace])
+            fig.update_layout(
+                title=f"ADC vs DAC (N = {len(dac_ds)})",
+                xaxis_title="DAC Voltage (V)",
+                yaxis_title="ADC Voltage (V)",
+                showlegend=False,
+                uirevision="liveview",
+            )
+            return fig
+
+        slope, intercept = self.fit(dac_ds, adc_ds)
+        x_fit = np.array([dac_ds.min(), dac_ds.max()])
+        y_fit = slope * x_fit + intercept
+        fit_trace = go.Scatter(
+            x=x_fit,
+            y=y_fit,
+            mode="lines",
+            name=f"Fit: y={slope:.4f}x+{intercept:.4f}",
+            line=dict(dash="dash"),
+        )
+
+        fig = go.Figure([trace, fit_trace])
         fig.update_layout(
-            title="ADC Voltage vs DAC Voltage",
+            title=f"ADC vs DAC (N = {len(dac_ds)})",
             xaxis_title="DAC Voltage (V)",
             yaxis_title="ADC Voltage (V)",
-            showlegend=False,
+            showlegend=True,
+            uirevision="liveview",
         )
+
+        # … add your annotations/residual‐stats here …
+
         return fig
 
 
