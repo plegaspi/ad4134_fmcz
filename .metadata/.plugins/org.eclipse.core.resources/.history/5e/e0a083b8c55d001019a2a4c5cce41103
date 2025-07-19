@@ -1,0 +1,22 @@
+#ifndef TCP_SERVER_H
+#define TCP_SERVER_H
+
+#include "lwip/err.h"
+#include "lwip/tcp.h"
+
+// Initializes LWIP, MAC, and sets up the network interface
+void initialize_network(void);
+
+// Polls and processes LWIP events (timers + incoming packets)
+void process_lwip_events(void);
+
+// Starts the TCP server (binds, listens, and sets accept callback)
+int start_tcp_server(void);
+
+// Sends a message over the active TCP connection
+err_t send_tcp_message(const char *msg);
+
+// Prints the application header (info on startup)
+void print_app_header(void);
+
+#endif // TCP_SERVER_H

@@ -1,0 +1,135 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdint.h>
+
+#include "lwip/sockets.h"
+#include "netif/xadapter.h"
+#include "lwipopts.h"
+#include "xil_printf.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "ad4134/ad713x.h"
+#include <math.h>
+#include "ad4134/parameters.h"
+
+#define THREAD_STACKSIZE 1024
+#define MAX_CONNECTIONS 1  // Only 1 client supported at a time for simplicity
+
+int new_sd[MAX_CONNECTIONS];
+
+u16_t echo_port = 7;
+
+// Use the buffer from main.c
+extern uint32_t adc_buffer[];
+extern uint32_t adc_buffer_len;
+
+extern int fill_buffer(void);
+
+void print_echo_app_header(void *arg)
+{
+    xil_printf("%20s %6d %s\r\n", "streaming server",
+                        echo_port,
+                        "$ nc <board_ip> 7");
+}
+
+void process_stream_request(void *p)
+{
+	int sd = *(int *)p;
+
+	while (1) {
+		// Optionally update buffer content here
+		// fill_buffer();  // if dynamic
+		if (fill_buffer() != 0) {
+		    xil_printf("SPI/DMA error, aborting send\n");
+		    break;
+		}
+
+		Xil_DCacheInvalidateRange((INTPTR)adc_buffer,
+		                             adc_buffer_len);
+
+		//Xil_DCacheInvalidateRange((INTPTR)adc_buffer, VALID_BYTES);
+		xil_printf("DBG: buf[0]=0x%08X, buf[mid]=0x%08X, buf[last]=0x%08X\r\n",
+		                   adc_buffer[0],
+		                   adc_buffer[ADC_BUFFER_SIZE/2],
+		                   adc_buffer[ADC_BUFFER_SIZE-1]);
+
+
+		/*int i, j;
+		float data;
+		float ch_voltages[4];
+		const float lsb = 4.096 / (pow(2, 23));
+		for (i = 0; i < AD4134_FMC_SAMPLE_NO; i++) {
+			j = 0;
+			while (j < AD4134_FMC_CH_NO) {
+				adc_buffer[AD4134_FMC_CH_NO * i + j] &= 0xffffff00;
+				adc_buffer[AD4134_FMC_CH_NO * i + j] >>= 8;
+				data = lsb * (int32_t)adc_buffer[AD4134_FMC_CH_NO * i + j];
+				if (data > 4.095)
+					data = data - 8.192;
+				ch_voltages[j] = data;
+				j++;
+			}
+			printf("%+1.5f, %+1.5f, %+1.5f, %+1.5f\r\n",
+										   ch_voltages[0], ch_voltages[1],
+										   ch_voltages[2], ch_voltages[3]);
+		}*/
+		/*int i, j;
+		for (i = 0; i < 1024; i++) {
+		        uint32_t *p = &adc_buffer[4 * i];
+		        // print four 32-bit words in one line, zero-padded hex
+		        printf("%08X  %08X  %08X  %08X\r\n",
+		               p[0], p[1], p[2], p[3]);
+		}*/
+
+
+
+		//int sent = lwip_send(sd, adc_buffer, adc_buffer_len, 0);
+		int sent = lwip_send(sd, adc_buffer, adc_buffer_len, 0);
+		if (sent <= 0) {
+			xil_printf("Client disconnected or error. Closing socket.\n");
+			break;
+		}
+
+		// Optional delay to prevent flooding
+		sys_check_timeouts();
+		vTaskDelay(pdMS_TO_TICKS(10));
+	}
+
+	lwip_close(sd);
+	vTaskDelete(NULL);
+}
+
+void echo_application_thread()
+{
+	int sock;
+	int size;
+	struct sockaddr_in address, remote;
+
+	memset(&address, 0, sizeof(address));
+
+	if ((sock = lwip_socket(AF_INET, SOCK_STREAM, 0)) < 0)
+		return;
+
+	address.sin_family = AF_INET;
+	address.sin_port = htons(echo_port);
+	address.sin_addr.s_addr = INADDR_ANY;
+
+	if (lwip_bind(sock, (struct sockaddr *)&address, sizeof (address)) < 0)
+		return;
+
+	lwip_listen(sock, 1);
+	size = sizeof(remote);
+
+	xil_printf("Waiting for client to stream data...\n");
+
+	while (1) {
+		new_sd[0] = lwip_accept(sock, (struct sockaddr *)&remote, (socklen_t *)&size);
+		if (new_sd[0] >= 0) {
+			xil_printf("Client connected! Starting stream...\n");
+			sys_thread_new("streambuf", process_stream_request,
+				(void*)&(new_sd[0]),
+				THREAD_STACKSIZE,
+				DEFAULT_THREAD_PRIO);
+		}
+	}
+}
