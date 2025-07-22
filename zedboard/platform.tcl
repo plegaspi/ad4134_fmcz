@@ -48,3 +48,18 @@ platform generate -domains
 platform clean
 platform clean
 platform generate
+platform generate -domains freertos10_xilinx_domain 
+platform generate
+platform active {zedboard}
+domain active {zynq_fsbl}
+bsp reload
+bsp reload
+domain active {freertos10_xilinx_domain}
+bsp reload
+bsp reload
+platform generate -domains 
+platform active {zedboard}
+platform config -updatehw {/home/neutrino/Desktop/system_top.xsa}
+platform generate
+platform clean
+platform generate

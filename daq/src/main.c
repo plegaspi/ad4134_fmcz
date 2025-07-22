@@ -5,6 +5,8 @@
 #include "xil_printf.h"
 #include "xtime_l.h"
 
+#include "parameters.h"
+
 #if LWIP_IPV6==1
 #include "lwip/ip.h"
 #else
@@ -21,20 +23,19 @@
 #include <string.h>
 #include <math.h>
 
-#include "ad4134/spi_engine.h"
-#include "ad4134/ad713x.h"
-#include "ad4134/no_os_spi.h"
-#include "ad4134/xilinx_spi.h"
-#include "ad4134/no_os_delay.h"
-#include "ad4134/no_os_gpio.h"
-#include "ad4134/xilinx_gpio.h"
-#include "ad4134/no_os_util.h"
-#include "ad4134/no_os_error.h"
-#include "ad4134/parameters.h"
-#include "ad4134/no_os_pwm.h"
-#include "ad4134/axi_pwm_extra.h"
-#include "ad4134/clk_axi_clkgen.h"
-#include "ad4134/axi_dmac.h"
+#include "vitis/ad4134/spi_engine.h"
+#include "vitis/ad4134/ad713x.h"
+#include "vitis/ad4134/no_os_spi.h"
+#include "vitis/ad4134/xilinx_spi.h"
+#include "vitis/ad4134/no_os_delay.h"
+#include "vitis/ad4134/no_os_gpio.h"
+#include "vitis/ad4134/xilinx_gpio.h"
+#include "vitis/ad4134/no_os_util.h"
+#include "vitis/ad4134/no_os_error.h"
+#include "vitis/ad4134/no_os_pwm.h"
+#include "vitis/ad4134/axi_pwm_extra.h"
+#include "vitis/ad4134/clk_axi_clkgen.h"
+#include "vitis/ad4134/axi_dmac.h"
 
 
 int main_thread();
@@ -42,7 +43,6 @@ void print_echo_app_header();
 void echo_application_thread(void *);
 
 void lwip_init();
-
 #if LWIP_IPV6==0
 #if LWIP_DHCP==1
 extern volatile int dhcp_timoutcntr;
@@ -95,7 +95,6 @@ int fill_buffer() {
 
 int main()
 {
-
 	struct axi_clkgen *clkgen_4134;
 	struct axi_clkgen_init clkgen_4134_init = {
 		.base = XPAR_AXI_AD4134_CLKGEN_BASEADDR,
@@ -336,6 +335,7 @@ int main_thread()
 #endif
 
 	lwip_init();
+
 
 	sys_thread_new("NW_THRD", network_thread, NULL,
 		THREAD_STACKSIZE, DEFAULT_THREAD_PRIO);

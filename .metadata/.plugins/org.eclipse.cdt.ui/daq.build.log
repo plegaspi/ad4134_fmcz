@@ -1,10 +1,290 @@
-11:24:42 **** Incremental Build of configuration Debug for project daq ****
+17:30:41 **** Incremental Build of configuration Debug for project daq ****
 make all 
 make --no-print-directory pre-build
 a9-linaro-pre-build-step
  
 make --no-print-directory main-build
-make[1]: Nothing to be done for 'main-build'.
+Building file: ../src/vitis/ad4134/ad713x.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/ad713x.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/ad713x.d" -MT"src/vitis/ad4134/ad713x.o" -o "src/vitis/ad4134/ad713x.o" "../src/vitis/ad4134/ad713x.c"
+../src/vitis/ad4134/ad713x.c: In function 'ad713x_channel_sync':
+../src/vitis/ad4134/ad713x.c:299:39: warning: passing argument 1 of 'no_os_gpio_set_value' from incompatible pointer type [-Wincompatible-pointer-types]
+  299 |         ret = no_os_gpio_set_value(dev->gpio_cs_sync, true);
+      |                                    ~~~^~~~~~~~~~~~~~
+      |                                       |
+      |                                       struct no_os_spi_desc *
+In file included from ../src/vitis/ad4134/ad713x.h:47,
+                 from ../src/vitis/ad4134/ad713x.c:41:
+../src/vitis/ad4134/no_os_gpio.h:159:54: note: expected 'struct no_os_gpio_desc *' but argument is of type 'struct no_os_spi_desc *'
+  159 | int32_t no_os_gpio_set_value(struct no_os_gpio_desc *desc,
+      |                              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+../src/vitis/ad4134/ad713x.c:307:39: warning: passing argument 1 of 'no_os_gpio_set_value' from incompatible pointer type [-Wincompatible-pointer-types]
+  307 |         ret = no_os_gpio_set_value(dev->gpio_cs_sync, false);
+      |                                    ~~~^~~~~~~~~~~~~~
+      |                                       |
+      |                                       struct no_os_spi_desc *
+../src/vitis/ad4134/no_os_gpio.h:159:54: note: expected 'struct no_os_gpio_desc *' but argument is of type 'struct no_os_spi_desc *'
+  159 | int32_t no_os_gpio_set_value(struct no_os_gpio_desc *desc,
+      |                              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+../src/vitis/ad4134/ad713x.c: In function 'ad713x_init_gpio':
+../src/vitis/ad4134/ad713x.c:419:39: warning: passing argument 1 of 'no_os_gpio_get_optional' from incompatible pointer type [-Wincompatible-pointer-types]
+  419 |         ret = no_os_gpio_get_optional(&dev->gpio_cs_sync, init_param->gpio_cs_sync);
+      |                                       ^~~~~~~~~~~~~~~~~~
+      |                                       |
+      |                                       struct no_os_spi_desc **
+../src/vitis/ad4134/no_os_gpio.h:141:58: note: expected 'struct no_os_gpio_desc **' but argument is of type 'struct no_os_spi_desc **'
+  141 | int32_t no_os_gpio_get_optional(struct no_os_gpio_desc **desc,
+      |                                 ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+../src/vitis/ad4134/ad713x.c:423:46: warning: passing argument 1 of 'no_os_gpio_direction_output' from incompatible pointer type [-Wincompatible-pointer-types]
+  423 |         ret = no_os_gpio_direction_output(dev->gpio_cs_sync, false);
+      |                                           ~~~^~~~~~~~~~~~~~
+      |                                              |
+      |                                              struct no_os_spi_desc *
+../src/vitis/ad4134/no_os_gpio.h:151:61: note: expected 'struct no_os_gpio_desc *' but argument is of type 'struct no_os_spi_desc *'
+  151 | int32_t no_os_gpio_direction_output(struct no_os_gpio_desc *desc,
+      |                                     ~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+Finished building: ../src/vitis/ad4134/ad713x.c
+ 
+Building file: ../src/vitis/ad4134/axi_dmac.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/axi_dmac.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/axi_dmac.d" -MT"src/vitis/ad4134/axi_dmac.o" -o "src/vitis/ad4134/axi_dmac.o" "../src/vitis/ad4134/axi_dmac.c"
+Finished building: ../src/vitis/ad4134/axi_dmac.c
+ 
+Building file: ../src/vitis/ad4134/axi_pwm.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/axi_pwm.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/axi_pwm.d" -MT"src/vitis/ad4134/axi_pwm.o" -o "src/vitis/ad4134/axi_pwm.o" "../src/vitis/ad4134/axi_pwm.c"
+Finished building: ../src/vitis/ad4134/axi_pwm.c
+ 
+Building file: ../src/vitis/ad4134/clk_axi_clkgen.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/clk_axi_clkgen.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/clk_axi_clkgen.d" -MT"src/vitis/ad4134/clk_axi_clkgen.o" -o "src/vitis/ad4134/clk_axi_clkgen.o" "../src/vitis/ad4134/clk_axi_clkgen.c"
+Finished building: ../src/vitis/ad4134/clk_axi_clkgen.c
+ 
+Building file: ../src/vitis/ad4134/no_os_alloc.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/no_os_alloc.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/no_os_alloc.d" -MT"src/vitis/ad4134/no_os_alloc.o" -o "src/vitis/ad4134/no_os_alloc.o" "../src/vitis/ad4134/no_os_alloc.c"
+Finished building: ../src/vitis/ad4134/no_os_alloc.c
+ 
+Building file: ../src/vitis/ad4134/no_os_dma.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/no_os_dma.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/no_os_dma.d" -MT"src/vitis/ad4134/no_os_dma.o" -o "src/vitis/ad4134/no_os_dma.o" "../src/vitis/ad4134/no_os_dma.c"
+Finished building: ../src/vitis/ad4134/no_os_dma.c
+ 
+Building file: ../src/vitis/ad4134/no_os_fifo.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/no_os_fifo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/no_os_fifo.d" -MT"src/vitis/ad4134/no_os_fifo.o" -o "src/vitis/ad4134/no_os_fifo.o" "../src/vitis/ad4134/no_os_fifo.c"
+Finished building: ../src/vitis/ad4134/no_os_fifo.c
+ 
+Building file: ../src/vitis/ad4134/no_os_gpio.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/no_os_gpio.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/no_os_gpio.d" -MT"src/vitis/ad4134/no_os_gpio.o" -o "src/vitis/ad4134/no_os_gpio.o" "../src/vitis/ad4134/no_os_gpio.c"
+Finished building: ../src/vitis/ad4134/no_os_gpio.c
+ 
+Building file: ../src/vitis/ad4134/no_os_irq.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/no_os_irq.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/no_os_irq.d" -MT"src/vitis/ad4134/no_os_irq.o" -o "src/vitis/ad4134/no_os_irq.o" "../src/vitis/ad4134/no_os_irq.c"
+Finished building: ../src/vitis/ad4134/no_os_irq.c
+ 
+Building file: ../src/vitis/ad4134/no_os_list.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/no_os_list.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/no_os_list.d" -MT"src/vitis/ad4134/no_os_list.o" -o "src/vitis/ad4134/no_os_list.o" "../src/vitis/ad4134/no_os_list.c"
+Finished building: ../src/vitis/ad4134/no_os_list.c
+ 
+Building file: ../src/vitis/ad4134/no_os_mutex.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/no_os_mutex.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/no_os_mutex.d" -MT"src/vitis/ad4134/no_os_mutex.o" -o "src/vitis/ad4134/no_os_mutex.o" "../src/vitis/ad4134/no_os_mutex.c"
+Finished building: ../src/vitis/ad4134/no_os_mutex.c
+ 
+Building file: ../src/vitis/ad4134/no_os_pwm.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/no_os_pwm.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/no_os_pwm.d" -MT"src/vitis/ad4134/no_os_pwm.o" -o "src/vitis/ad4134/no_os_pwm.o" "../src/vitis/ad4134/no_os_pwm.c"
+Finished building: ../src/vitis/ad4134/no_os_pwm.c
+ 
+Building file: ../src/vitis/ad4134/no_os_spi.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/no_os_spi.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/no_os_spi.d" -MT"src/vitis/ad4134/no_os_spi.o" -o "src/vitis/ad4134/no_os_spi.o" "../src/vitis/ad4134/no_os_spi.c"
+Finished building: ../src/vitis/ad4134/no_os_spi.c
+ 
+Building file: ../src/vitis/ad4134/no_os_util.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/no_os_util.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/no_os_util.d" -MT"src/vitis/ad4134/no_os_util.o" -o "src/vitis/ad4134/no_os_util.o" "../src/vitis/ad4134/no_os_util.c"
+Finished building: ../src/vitis/ad4134/no_os_util.c
+ 
+Building file: ../src/vitis/ad4134/spi_engine.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/spi_engine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/spi_engine.d" -MT"src/vitis/ad4134/spi_engine.o" -o "src/vitis/ad4134/spi_engine.o" "../src/vitis/ad4134/spi_engine.c"
+Finished building: ../src/vitis/ad4134/spi_engine.c
+ 
+Building file: ../src/vitis/ad4134/xilinx_axi_io.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/xilinx_axi_io.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/xilinx_axi_io.d" -MT"src/vitis/ad4134/xilinx_axi_io.o" -o "src/vitis/ad4134/xilinx_axi_io.o" "../src/vitis/ad4134/xilinx_axi_io.c"
+Finished building: ../src/vitis/ad4134/xilinx_axi_io.c
+ 
+Building file: ../src/vitis/ad4134/xilinx_delay.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/xilinx_delay.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/xilinx_delay.d" -MT"src/vitis/ad4134/xilinx_delay.o" -o "src/vitis/ad4134/xilinx_delay.o" "../src/vitis/ad4134/xilinx_delay.c"
+Finished building: ../src/vitis/ad4134/xilinx_delay.c
+ 
+Building file: ../src/vitis/ad4134/xilinx_gpio.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/xilinx_gpio.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/xilinx_gpio.d" -MT"src/vitis/ad4134/xilinx_gpio.o" -o "src/vitis/ad4134/xilinx_gpio.o" "../src/vitis/ad4134/xilinx_gpio.c"
+Finished building: ../src/vitis/ad4134/xilinx_gpio.c
+ 
+Building file: ../src/vitis/ad4134/xilinx_gpio_irq.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/xilinx_gpio_irq.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/xilinx_gpio_irq.d" -MT"src/vitis/ad4134/xilinx_gpio_irq.o" -o "src/vitis/ad4134/xilinx_gpio_irq.o" "../src/vitis/ad4134/xilinx_gpio_irq.c"
+../src/vitis/ad4134/xilinx_gpio_irq.c: In function 'xil_gpio_irq_handler':
+../src/vitis/ad4134/xilinx_gpio_irq.c:70:48: warning: passing argument 2 of 'no_os_iterator_read' from incompatible pointer type [-Wincompatible-pointer-types]
+   70 |                 no_os_iterator_read(param->it, &callback_desc);
+      |                                                ^~~~~~~~~~~~~~
+      |                                                |
+      |                                                struct xil_callback_desc **
+In file included from ../src/vitis/ad4134/xilinx_gpio_irq.h:41,
+                 from ../src/vitis/ad4134/xilinx_gpio_irq.c:34:
+../src/vitis/ad4134/no_os_list.h:256:65: note: expected 'void **' but argument is of type 'struct xil_callback_desc **'
+  256 | int32_t no_os_iterator_read(struct no_os_iterator *iter, void **data);
+      |                                                          ~~~~~~~^~~~
+../src/vitis/ad4134/xilinx_gpio_irq.c:78:48: warning: passing argument 2 of 'no_os_iterator_read' from incompatible pointer type [-Wincompatible-pointer-types]
+   78 |                 no_os_iterator_read(param->it, &callback_desc);
+      |                                                ^~~~~~~~~~~~~~
+      |                                                |
+      |                                                struct xil_callback_desc **
+../src/vitis/ad4134/no_os_list.h:256:65: note: expected 'void **' but argument is of type 'struct xil_callback_desc **'
+  256 | int32_t no_os_iterator_read(struct no_os_iterator *iter, void **data);
+      |                                                          ~~~~~~~^~~~
+../src/vitis/ad4134/xilinx_gpio_irq.c:65:17: warning: unused variable 'pin_nb' [-Wunused-variable]
+   65 |         int32_t pin_nb;
+      |                 ^~~~~~
+../src/vitis/ad4134/xilinx_gpio_irq.c: In function 'xil_gpio_irq_disable':
+../src/vitis/ad4134/xilinx_gpio_irq.c:107:48: warning: passing argument 2 of 'no_os_iterator_read' from incompatible pointer type [-Wincompatible-pointer-types]
+  107 |                 no_os_iterator_read(extra->it, &callback_desc);
+      |                                                ^~~~~~~~~~~~~~
+      |                                                |
+      |                                                struct xil_callback_desc **
+../src/vitis/ad4134/no_os_list.h:256:65: note: expected 'void **' but argument is of type 'struct xil_callback_desc **'
+  256 | int32_t no_os_iterator_read(struct no_os_iterator *iter, void **data);
+      |                                                          ~~~~~~~^~~~
+../src/vitis/ad4134/xilinx_gpio_irq.c: In function 'xil_gpio_irq_ctrl_init':
+../src/vitis/ad4134/xilinx_gpio_irq.c:159:34: warning: passing argument 3 of 'no_os_list_init' from incompatible pointer type [-Wincompatible-pointer-types]
+  159 |                                  call_cmp);
+      |                                  ^~~~~~~~
+      |                                  |
+      |                                  int32_t (*)(struct xil_callback_desc *, struct xil_callback_desc *) {aka long int (*)(struct xil_callback_desc *, struct xil_callback_desc *)}
+../src/vitis/ad4134/no_os_list.h:235:31: note: expected 'f_cmp' {aka 'long int (*)(void *, void *)'} but argument is of type 'int32_t (*)(struct xil_callback_desc *, struct xil_callback_desc *)' {aka 'long int (*)(struct xil_callback_desc *, struct xil_callback_desc *)'}
+  235 |                         f_cmp comparator);
+      |                         ~~~~~~^~~~~~~~~~
+../src/vitis/ad4134/xilinx_gpio_irq.c:179:27: warning: assignment to 'void (*)(void *)' from incompatible pointer type 'void (*)(struct xil_gpio_irq_desc *)' [-Wincompatible-pointer-types]
+  179 |         callback.callback = &xil_gpio_irq_handler;
+      |                           ^
+../src/vitis/ad4134/xilinx_gpio_irq.c:130:17: warning: unused variable 'i' [-Wunused-variable]
+  130 |         int32_t i;
+      |                 ^
+../src/vitis/ad4134/xilinx_gpio_irq.c: In function 'xil_gpio_irq_unregister_callback':
+../src/vitis/ad4134/xilinx_gpio_irq.c:273:60: warning: passing argument 2 of 'no_os_list_get_find' from incompatible pointer type [-Wincompatible-pointer-types]
+  273 |         status = no_os_list_get_find(extra->callback_list, &dev_callback,
+      |                                                            ^~~~~~~~~~~~~
+      |                                                            |
+      |                                                            struct xil_callback_desc **
+../src/vitis/ad4134/no_os_list.h:303:71: note: expected 'void **' but argument is of type 'struct xil_callback_desc **'
+  303 | int32_t no_os_list_get_find(struct no_os_list_desc *list_desc, void **data,
+      |                                                                ~~~~~~~^~~~
+../src/vitis/ad4134/xilinx_gpio_irq.c: In function 'xil_gpio_irq_enable':
+../src/vitis/ad4134/xilinx_gpio_irq.c:299:48: warning: passing argument 2 of 'no_os_iterator_read' from incompatible pointer type [-Wincompatible-pointer-types]
+  299 |                 no_os_iterator_read(extra->it, &callback_desc);
+      |                                                ^~~~~~~~~~~~~~
+      |                                                |
+      |                                                struct xil_callback_desc **
+../src/vitis/ad4134/no_os_list.h:256:65: note: expected 'void **' but argument is of type 'struct xil_callback_desc **'
+  256 | int32_t no_os_iterator_read(struct no_os_iterator *iter, void **data);
+      |                                                          ~~~~~~~^~~~
+../src/vitis/ad4134/xilinx_gpio_irq.c: In function 'xil_gpio_irq_ctrl_remove':
+../src/vitis/ad4134/xilinx_gpio_irq.c:327:64: warning: passing argument 2 of 'no_os_list_get_first' from incompatible pointer type [-Wincompatible-pointer-types]
+  327 |         while (0 == no_os_list_get_first(extra->callback_list, &callback_desc))
+      |                                                                ^~~~~~~~~~~~~~
+      |                                                                |
+      |                                                                struct xil_callback_desc **
+../src/vitis/ad4134/no_os_list.h:269:72: note: expected 'void **' but argument is of type 'struct xil_callback_desc **'
+  269 | int32_t no_os_list_get_first(struct no_os_list_desc *list_desc, void **data);
+      |                                                                 ~~~~~~~^~~~
+Finished building: ../src/vitis/ad4134/xilinx_gpio_irq.c
+ 
+Building file: ../src/vitis/ad4134/xilinx_i2c.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/xilinx_i2c.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/xilinx_i2c.d" -MT"src/vitis/ad4134/xilinx_i2c.o" -o "src/vitis/ad4134/xilinx_i2c.o" "../src/vitis/ad4134/xilinx_i2c.c"
+Finished building: ../src/vitis/ad4134/xilinx_i2c.c
+ 
+Building file: ../src/vitis/ad4134/xilinx_irq.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/xilinx_irq.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/xilinx_irq.d" -MT"src/vitis/ad4134/xilinx_irq.o" -o "src/vitis/ad4134/xilinx_irq.o" "../src/vitis/ad4134/xilinx_irq.c"
+Finished building: ../src/vitis/ad4134/xilinx_irq.c
+ 
+Building file: ../src/vitis/ad4134/xilinx_spi.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/xilinx_spi.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/xilinx_spi.d" -MT"src/vitis/ad4134/xilinx_spi.o" -o "src/vitis/ad4134/xilinx_spi.o" "../src/vitis/ad4134/xilinx_spi.c"
+../src/vitis/ad4134/xilinx_spi.c:59:2: warning: #warning SPI delays are not supported on the xilinx platform [-Wcpp]
+   59 | #warning SPI delays are not supported on the xilinx platform
+      |  ^~~~~~~
+Finished building: ../src/vitis/ad4134/xilinx_spi.c
+ 
+Building file: ../src/vitis/ad4134/xilinx_spi_pl.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/xilinx_spi_pl.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/xilinx_spi_pl.d" -MT"src/vitis/ad4134/xilinx_spi_pl.o" -o "src/vitis/ad4134/xilinx_spi_pl.o" "../src/vitis/ad4134/xilinx_spi_pl.c"
+Finished building: ../src/vitis/ad4134/xilinx_spi_pl.c
+ 
+Building file: ../src/vitis/ad4134/xilinx_timer.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/ad4134/xilinx_timer.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/ad4134/xilinx_timer.d" -MT"src/vitis/ad4134/xilinx_timer.o" -o "src/vitis/ad4134/xilinx_timer.o" "../src/vitis/ad4134/xilinx_timer.c"
+Finished building: ../src/vitis/ad4134/xilinx_timer.c
+ 
+Building file: ../src/vitis/data-transfer.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/vitis/data-transfer.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/vitis/data-transfer.d" -MT"src/vitis/data-transfer.o" -o "src/vitis/data-transfer.o" "../src/vitis/data-transfer.c"
+../src/vitis/data-transfer.c: In function 'process_stream_request':
+../src/vitis/data-transfer.c:45:17: warning: implicit declaration of function 'Xil_DCacheInvalidateRange' [-Wimplicit-function-declaration]
+   45 |                 Xil_DCacheInvalidateRange((INTPTR)adc_buffers[buffer_idx], SAMPLE_DATA * sizeof(uint32_t));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~
+Finished building: ../src/vitis/data-transfer.c
+ 
+Building file: ../src/main.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bspinclude/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:215:9: warning: implicit declaration of function 'Xil_ICacheEnable' [-Wimplicit-function-declaration]
+  215 |         Xil_ICacheEnable();
+      |         ^~~~~~~~~~~~~~~~
+../src/main.c:216:9: warning: implicit declaration of function 'Xil_DCacheEnable' [-Wimplicit-function-declaration]
+  216 |         Xil_DCacheEnable();
+      |         ^~~~~~~~~~~~~~~~
+../src/main.c:263:9: warning: implicit declaration of function 'Xil_DCacheDisable' [-Wimplicit-function-declaration]
+  263 |         Xil_DCacheDisable();
+      |         ^~~~~~~~~~~~~~~~~
+../src/main.c:264:9: warning: implicit declaration of function 'Xil_ICacheDisable' [-Wimplicit-function-declaration]
+  264 |         Xil_ICacheDisable();
+      |         ^~~~~~~~~~~~~~~~~
+../src/main.c: In function 'network_thread':
+../src/main.c:288:5: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  288 |     print_ip_settings(&ipaddr, &netmask, &gw);
+      |     ^~~~~~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:384:6: warning: conflicting types for 'print_ip_settings'; have 'void(ip_addr_t *, ip_addr_t *, ip_addr_t *)' {aka 'void(struct ip4_addr *, struct ip4_addr *, struct ip4_addr *)'}
+  384 | void print_ip_settings(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
+      |      ^~~~~~~~~~~~~~~~~
+../src/main.c:288:5: note: previous implicit declaration of 'print_ip_settings' with type 'void(ip_addr_t *, ip_addr_t *, ip_addr_t *)' {aka 'void(struct ip4_addr *, struct ip4_addr *, struct ip4_addr *)'}
+  288 |     print_ip_settings(&ipaddr, &netmask, &gw);
+      |     ^~~~~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: daq.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/freertos10_xilinx_domain/bsplib/lib -o "daq.elf" ./src/vitis/ad4134/ad713x.o ./src/vitis/ad4134/axi_dmac.o ./src/vitis/ad4134/axi_pwm.o ./src/vitis/ad4134/clk_axi_clkgen.o ./src/vitis/ad4134/no_os_alloc.o ./src/vitis/ad4134/no_os_dma.o ./src/vitis/ad4134/no_os_fifo.o ./src/vitis/ad4134/no_os_gpio.o ./src/vitis/ad4134/no_os_irq.o ./src/vitis/ad4134/no_os_list.o ./src/vitis/ad4134/no_os_mutex.o ./src/vitis/ad4134/no_os_pwm.o ./src/vitis/ad4134/no_os_spi.o ./src/vitis/ad4134/no_os_util.o ./src/vitis/ad4134/spi_engine.o ./src/vitis/ad4134/xilinx_axi_io.o ./src/vitis/ad4134/xilinx_delay.o ./src/vitis/ad4134/xilinx_gpio.o ./src/vitis/ad4134/xilinx_gpio_irq.o ./src/vitis/ad4134/xilinx_i2c.o ./src/vitis/ad4134/xilinx_irq.o ./src/vitis/ad4134/xilinx_spi.o ./src/vitis/ad4134/xilinx_spi_pl.o ./src/vitis/ad4134/xilinx_timer.o  ./src/vitis/data-transfer.o  ./src/main.o   -Wl,--start-group,-lxil,-lfreertos,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+Finished building target: daq.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size daq.elf  |tee "daq.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 250973	   3496	11655232	11909701	 b5ba45	daq.elf
+Finished building: daq.elf.size
+ 
 
-11:24:42 Build Finished (took 118ms)
+17:30:42 Build Finished (took 1s.172ms)
 

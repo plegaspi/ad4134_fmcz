@@ -1,6 +1,6 @@
 from multiprocessing import Process, Event
-from dashboard import create_dashboard
-from daq import DAQ
+from client.dashboards import dashboard
+from client.daq import daq as DAQ
 
 ################
 # Board Config #
@@ -43,7 +43,7 @@ if __name__ == "__main__":
         ),
     )
 
-    dashboard_process = Process(target=create_dashboard, args=(file_name,))
+    dashboard_process = Process(target=dashboard.create_dashboard, args=(file_name,))
     try:
         daq_process.start()
         dashboard_process.start()
