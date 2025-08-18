@@ -1,6 +1,6 @@
 from multiprocessing import Process, Event
 from client.dashboards import dashboard
-from client.daq import daq as DAQ
+from client.daq.daq import DAQ
 
 ################
 # Board Config #
@@ -23,7 +23,6 @@ stop_event = Event()
 def collect_data(
     board_ip, port, samples, channels, timestamp_header, file_name, stop_event
 ):
-
     daq = DAQ(board_ip, port, samples, channels, timestamp_header, file_name)
     daq.init_hdf5()
     daq.run(stop_event)

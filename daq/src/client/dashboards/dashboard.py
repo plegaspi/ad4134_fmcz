@@ -2,7 +2,7 @@ from dash import Dash, dcc, html, Input, Output, callback, exceptions
 import dash_daq as daq
 import plotly.express as px
 import h5py
-from Plotting import Live_View, Overview
+from client.utils.plotting import Live_View, Overview
 
 ######################
 #       Config       #

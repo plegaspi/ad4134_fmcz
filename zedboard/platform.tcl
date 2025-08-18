@@ -63,3 +63,20 @@ platform config -updatehw {/home/neutrino/Desktop/system_top.xsa}
 platform generate
 platform clean
 platform generate
+platform active {zedboard}
+domain active {zynq_fsbl}
+bsp reload
+domain active {freertos10_xilinx_domain}
+bsp reload
+platform active {zedboard}
+platform active {zedboard}
+platform active {zedboard}
+platform generate
+domain active {zynq_fsbl}
+bsp reload
+domain active {freertos10_xilinx_domain}
+bsp reload
+domain active {zynq_fsbl}
+bsp reload
+domain active {freertos10_xilinx_domain}
+bsp reload

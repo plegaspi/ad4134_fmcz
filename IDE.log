@@ -8440,3 +8440,137 @@ con
 
 17:29:07 INFO  : Launch script is exported to file '/home/neutrino/work/ethernet-data-transfer/daq_system/_ide/scripts/debugger_daq-default.tcl'
 17:30:41 INFO  : Checking for BSP changes to sync application flags for project 'daq'...
+13:02:17 DEBUG : Logs will be stored at '/home/neutrino/work/ethernet-data-transfer/IDE.log'.
+13:02:18 INFO  : Launching XSCT server: xsct -n  -interactive /home/neutrino/work/ethernet-data-transfer/temp_xsdb_launch_script.tcl
+13:02:19 INFO  : XSCT server has started successfully.
+13:02:19 INFO  : Successfully done setting XSCT server connection channel  
+13:02:19 INFO  : plnx-install-location is set to ''
+13:02:19 INFO  : Successfully done setting workspace for the tool. 
+13:02:21 INFO  : Registering command handlers for Vitis TCF services
+13:02:21 INFO  : Successfully done query RDI_DATADIR 
+13:02:21 INFO  : Platform repository initialization has completed.
+12:19:51 DEBUG : Logs will be stored at '/home/neutrino/work/ethernet-data-transfer/IDE.log'.
+12:19:51 INFO  : Launching XSCT server: xsct -n  -interactive /home/neutrino/work/ethernet-data-transfer/temp_xsdb_launch_script.tcl
+12:19:52 INFO  : XSCT server has started successfully.
+12:19:52 INFO  : Successfully done setting XSCT server connection channel  
+12:19:52 INFO  : plnx-install-location is set to ''
+12:19:52 INFO  : Successfully done setting workspace for the tool. 
+12:19:52 INFO  : Successfully done query RDI_DATADIR 
+12:19:53 INFO  : Registering command handlers for Vitis TCF services
+12:19:53 INFO  : Platform repository initialization has completed.
+14:32:12 DEBUG : Logs will be stored at '/home/neutrino/work/ethernet-data-transfer/IDE.log'.
+14:32:12 INFO  : Launching XSCT server: xsct -n  -interactive /home/neutrino/work/ethernet-data-transfer/temp_xsdb_launch_script.tcl
+14:32:13 INFO  : XSCT server has started successfully.
+14:32:13 INFO  : plnx-install-location is set to ''
+14:32:13 INFO  : Successfully done setting XSCT server connection channel  
+14:32:13 INFO  : Successfully done setting workspace for the tool. 
+14:32:13 INFO  : Successfully done query RDI_DATADIR 
+14:32:14 INFO  : Registering command handlers for Vitis TCF services
+14:32:15 INFO  : Platform repository initialization has completed.
+12:35:31 DEBUG : Logs will be stored at '/home/neutrino/work/ethernet-data-transfer/IDE.log'.
+12:35:31 INFO  : Launching XSCT server: xsct -n  -interactive /home/neutrino/work/ethernet-data-transfer/temp_xsdb_launch_script.tcl
+12:35:32 INFO  : XSCT server has started successfully.
+12:35:32 INFO  : Successfully done setting XSCT server connection channel  
+12:35:32 INFO  : Successfully done setting workspace for the tool. 
+12:35:32 INFO  : plnx-install-location is set to ''
+12:35:32 INFO  : Successfully done query RDI_DATADIR 
+12:35:35 INFO  : Registering command handlers for Vitis TCF services
+12:35:36 INFO  : Platform repository initialization has completed.
+12:35:42 INFO  : Result from executing command 'getProjects': zedboard
+12:35:42 INFO  : Result from executing command 'getPlatforms': xilinx_vck190_base_202310_1|/tools/Xilinx/Vitis/2023.1/base_platforms/xilinx_vck190_base_202310_1/xilinx_vck190_base_202310_1.xpfm;xilinx_vck190_base_dfx_202310_1|/tools/Xilinx/Vitis/2023.1/base_platforms/xilinx_vck190_base_dfx_202310_1/xilinx_vck190_base_dfx_202310_1.xpfm;xilinx_vek280_es1_base_202310_1|/tools/Xilinx/Vitis/2023.1/base_platforms/xilinx_vek280_es1_base_202310_1/xilinx_vek280_es1_base_202310_1.xpfm;xilinx_vmk180_base_202310_1|/tools/Xilinx/Vitis/2023.1/base_platforms/xilinx_vmk180_base_202310_1/xilinx_vmk180_base_202310_1.xpfm;xilinx_zcu102_base_202310_1|/tools/Xilinx/Vitis/2023.1/base_platforms/xilinx_zcu102_base_202310_1/xilinx_zcu102_base_202310_1.xpfm;xilinx_zcu102_base_dfx_202310_1|/tools/Xilinx/Vitis/2023.1/base_platforms/xilinx_zcu102_base_dfx_202310_1/xilinx_zcu102_base_dfx_202310_1.xpfm;xilinx_zcu104_base_202310_1|/tools/Xilinx/Vitis/2023.1/base_platforms/xilinx_zcu104_base_202310_1/xilinx_zcu104_base_202310_1.xpfm;zedboard|/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/zedboard.xpfm
+12:35:45 INFO  : Checking for BSP changes to sync application flags for project 'daq'...
+12:36:10 INFO  : No changes in MSS file content so sources will not be generated.
+12:39:38 INFO  : No changes in MSS file content so sources will not be generated.
+12:39:45 INFO  : Checking for BSP changes to sync application flags for project 'daq'...
+12:39:49 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:39:49 INFO  : Jtag cable 'Digilent Zed 210248BD1168' is selected.
+12:39:49 INFO  : 'jtag frequency' command is executed.
+12:39:49 INFO  : Context for 'APU' is selected.
+12:39:49 INFO  : System reset is completed.
+12:39:52 INFO  : 'after 3000' command is executed.
+12:39:52 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248BD1168" && level==0 && jtag_device_ctx=="jsn-Zed-210248BD1168-23727093-0"}' command is executed.
+12:39:53 INFO  : Device configured successfully with "/home/neutrino/work/ethernet-data-transfer/daq/_ide/bitstream/system_top.bit"
+12:39:53 INFO  : Context for 'APU' is selected.
+12:39:53 INFO  : Hardware design and registers information is loaded from '/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/hw/system_top.xsa'.
+12:39:53 INFO  : 'configparams force-mem-access 1' command is executed.
+12:39:53 INFO  : Context for 'APU' is selected.
+12:39:53 INFO  : Sourcing of '/home/neutrino/work/ethernet-data-transfer/daq/_ide/psinit/ps7_init.tcl' is done.
+12:39:53 INFO  : 'ps7_init' command is executed.
+12:39:53 INFO  : 'ps7_post_config' command is executed.
+12:39:53 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:39:54 INFO  : The application '/home/neutrino/work/ethernet-data-transfer/daq/Debug/daq.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:39:54 INFO  : 'configparams force-mem-access 0' command is executed.
+12:39:54 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248BD1168" && level==0 && jtag_device_ctx=="jsn-Zed-210248BD1168-23727093-0"}
+fpga -file /home/neutrino/work/ethernet-data-transfer/daq/_ide/bitstream/system_top.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/hw/system_top.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/neutrino/work/ethernet-data-transfer/daq/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/neutrino/work/ethernet-data-transfer/daq/Debug/daq.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:39:54 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:39:54 INFO  : 'con' command is executed.
+12:39:54 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+12:39:54 INFO  : Launch script is exported to file '/home/neutrino/work/ethernet-data-transfer/daq_system/_ide/scripts/debugger_daq-default.tcl'
+12:40:12 INFO  : Checking for BSP changes to sync application flags for project 'daq'...
+12:40:17 INFO  : Disconnected from the channel tcfchan#2.
+12:40:18 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:40:18 INFO  : Jtag cable 'Digilent Zed 210248BD1168' is selected.
+12:40:18 INFO  : 'jtag frequency' command is executed.
+12:40:18 INFO  : Context for 'APU' is selected.
+12:40:18 INFO  : System reset is completed.
+12:40:21 INFO  : 'after 3000' command is executed.
+12:40:21 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248BD1168" && level==0 && jtag_device_ctx=="jsn-Zed-210248BD1168-23727093-0"}' command is executed.
+12:40:22 INFO  : Device configured successfully with "/home/neutrino/work/ethernet-data-transfer/daq/_ide/bitstream/system_top.bit"
+12:40:22 INFO  : Context for 'APU' is selected.
+12:40:22 INFO  : Hardware design and registers information is loaded from '/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/hw/system_top.xsa'.
+12:40:22 INFO  : 'configparams force-mem-access 1' command is executed.
+12:40:22 INFO  : Context for 'APU' is selected.
+12:40:22 INFO  : Sourcing of '/home/neutrino/work/ethernet-data-transfer/daq/_ide/psinit/ps7_init.tcl' is done.
+12:40:22 INFO  : 'ps7_init' command is executed.
+12:40:22 INFO  : 'ps7_post_config' command is executed.
+12:40:22 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:40:23 INFO  : The application '/home/neutrino/work/ethernet-data-transfer/daq/Debug/daq.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:40:23 INFO  : 'configparams force-mem-access 0' command is executed.
+12:40:23 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248BD1168" && level==0 && jtag_device_ctx=="jsn-Zed-210248BD1168-23727093-0"}
+fpga -file /home/neutrino/work/ethernet-data-transfer/daq/_ide/bitstream/system_top.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw /home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/hw/system_top.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source /home/neutrino/work/ethernet-data-transfer/daq/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow /home/neutrino/work/ethernet-data-transfer/daq/Debug/daq.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:40:23 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:40:23 INFO  : 'con' command is executed.
+12:40:23 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+12:40:23 INFO  : Launch script is exported to file '/home/neutrino/work/ethernet-data-transfer/daq_system/_ide/scripts/debugger_daq-default.tcl'

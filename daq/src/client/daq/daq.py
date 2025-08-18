@@ -182,7 +182,7 @@ class DAQ:
                     rows.append(row)
 
                 voltages = np.array(rows, dtype=np.float32)
-
+                print(voltages)
                 self.write_data(voltages, buffer, offset)
 
         except KeyboardInterrupt:
