@@ -24,6 +24,10 @@ ps7_init
 ps7_post_config
 targets -set -nocase -filter {name =~ "*A9*#0"}
 dow /home/neutrino/work/ethernet-data-transfer/daq/Debug/daq.elf
+targets -set -nocase -filter {name =~ "*A9*#1"}
+dow /home/neutrino/work/ethernet-data-transfer/trigger/Debug/trigger.elf
 configparams force-mem-access 0
 targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+targets -set -nocase -filter {name =~ "*A9*#1"}
 con

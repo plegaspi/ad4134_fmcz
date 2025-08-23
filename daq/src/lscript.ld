@@ -23,10 +23,11 @@ _UNDEF_STACK_SIZE = DEFINED(_UNDEF_STACK_SIZE) ? _UNDEF_STACK_SIZE : 1024;
 
 MEMORY
 {
-   ps7_ddr_0 : ORIGIN = 0x100000, LENGTH = 0x1FF00000
+   ps7_ddr_0 : ORIGIN = 0x100000, LENGTH = 0x7FC00000
    ps7_qspi_linear_0 : ORIGIN = 0xFC000000, LENGTH = 0x1000000
    ps7_ram_0 : ORIGIN = 0x0, LENGTH = 0x30000
    ps7_ram_1 : ORIGIN = 0xFFFF0000, LENGTH = 0xFE00
+   shared : ORIGIN = 0x20000000, LENGTH = 0x01000000
 }
 
 /* Specify the default entry point to the program */
@@ -37,6 +38,12 @@ ENTRY(_vector_table)
 
 SECTIONS
 {
+.shared_dma : {
+      . = ALIGN(1024);
+      KEEP(*(.shared_dma))
+      . = ALIGN(1024);
+} > shared
+   
 .text : {
    . = ALIGN(2048);
    KEEP (*(.vectors))

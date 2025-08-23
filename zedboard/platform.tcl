@@ -80,3 +80,27 @@ domain active {zynq_fsbl}
 bsp reload
 domain active {freertos10_xilinx_domain}
 bsp reload
+platform active {zedboard}
+domain create -name {daq_trigger} -os {standalone} -proc {ps7_cortexa9_1} -arch {32-bit} -display-name {daq_trigger} -desc {} -runtime {cpp}
+platform generate -domains 
+platform write
+domain -report -json
+bsp reload
+bsp reload
+platform generate -domains daq_trigger 
+bsp reload
+bsp config extra_compiler_flags "-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns-DUSE_AMP=1"
+bsp config extra_compiler_flags "-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra -fno-tree-loop-distribute-patterns -DUSE_AMP=1"
+bsp write
+bsp reload
+catch {bsp regenerate}
+domain active {freertos10_xilinx_domain}
+bsp reload
+bsp reload
+domain active {daq_trigger}
+bsp reload
+platform generate -domains daq_trigger 
+platform clean
+platform generate
+platform clean
+platform generate

@@ -38,6 +38,7 @@
 #include "vitis/ad4134/axi_dmac.h"
 
 
+
 int main_thread();
 void print_echo_app_header();
 void echo_application_thread(void *);
@@ -57,11 +58,20 @@ struct netif *echo_netif;
 
 struct no_os_spi_desc *spi_eng_desc;
 struct spi_engine_offload_message spi_engine_offload_message;
+/*
 uint32_t adc_buffer_a[ADC_BUFFER_SIZE] __attribute__((aligned(1024)));
 uint32_t adc_buffer_b[ADC_BUFFER_SIZE] __attribute__((aligned(1024)));
 uint32_t adc_buffer_len = ADC_BUFFER_SIZE * sizeof(uint32_t);
 uint32_t *adc_buffers[2] = {adc_buffer_a, adc_buffer_b};
 volatile uint8_t buffer_idx = 0;
+*/
+/*uint32_t adc_buffer_a[ADC_BUFFER_SIZE] __attribute__((section(".shared_dma"), aligned(1024)));
+uint32_t adc_buffer_b[ADC_BUFFER_SIZE] __attribute__((section(".shared_dma"), aligned(1024)));
+uint32_t adc_buffer_len __attribute__((section(".shared_dma"))) = ADC_BUFFER_SIZE * sizeof(uint32_t);
+uint32_t *adc_buffers[2] __attribute__((section(".shared_dma"))) = {adc_buffer_a, adc_buffer_b};
+volatile uint8_t buffer_idx __attribute__((section(".shared_dma"))) = 0;*/
+
+
 //uint32_t adc_buffer_len = VALID_BYTES;
 
 uint32_t i = 0, j;
@@ -69,6 +79,30 @@ int32_t ret;
 const float lsb = 4.096 / (pow(2, 23));
 float data;
 
+
+
+uint32_t constant_buffer[ADC_BUFFER_SIZE] __attribute__((aligned(1024))) = {0};
+
+
+// Simple pseudo-random number generator (LCG)
+static uint32_t lcg_rand(uint32_t *seed)
+{
+    *seed = (*seed * 1664525UL + 1013904223UL);
+    return *seed;
+}
+
+// Function to fill buffer once with random data
+static void fill_buffer_with_random_data()
+{
+    uint32_t seed = 0xDEADBEEF;  // Replace or randomize as needed
+
+    for (int i = 0; i < ADC_BUFFER_SIZE; i++) {
+    	constant_buffer[i] = lcg_rand(&seed);
+    }
+
+    xil_printf("Filled with random data\r\n");
+
+}
 
 int fill_buffer() {
 
@@ -85,8 +119,10 @@ int fill_buffer() {
 
 	#endif
 
+	spi_engine_offload_message.rx_addr = (uint32_t)adc_buffers[buffer_idx];
 	ret = spi_engine_offload_transfer(spi_eng_desc, spi_engine_offload_message,
 	        					  (AD4134_FMC_CH_NO * AD4134_FMC_SAMPLE_NO));
+
 	if (ret != 0) {
 	    return ret;
 	}
@@ -95,6 +131,8 @@ int fill_buffer() {
 
 int main()
 {
+	xil_printf("Program start");
+	fill_buffer_with_random_data();
 	struct axi_clkgen *clkgen_4134;
 	struct axi_clkgen_init clkgen_4134_init = {
 		.base = XPAR_AXI_AD4134_CLKGEN_BASEADDR,

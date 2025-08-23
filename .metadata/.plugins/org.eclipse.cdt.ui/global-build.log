@@ -1,9 +1,27 @@
 Nothing to build in platform 'zedboard'
 
-12:40:13 **** Incremental Build of configuration Debug for project daq ****
+17:13:19 **** Incremental Build of configuration Debug for project trigger ****
 make all 
 make --no-print-directory pre-build
 a9-linaro-pre-build-step
  
 make --no-print-directory main-build
-make[1]: Nothing to be done for 'main-build'.
+Building file: ../src/helloworld.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -I"/home/neutrino/work/ethernet-data-transfer/daq_system/common" -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/daq_trigger/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+Finished building: ../src/helloworld.c
+ 
+Building file: ../src/platform.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -I"/home/neutrino/work/ethernet-data-transfer/daq_system/common" -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/daq_trigger/bspinclude/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+Building target: trigger.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard/sw/zedboard/daq_trigger/bsplib/lib -o "trigger.elf" ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+/tools/Xilinx/Vitis/2023.1/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/bin/arm-xilinx-eabi/arm-xilinx-eabi-ld.real: ./src/helloworld.o: in function `main':
+/home/neutrino/work/ethernet-data-transfer/trigger/Debug/../src/helloworld.c:60: undefined reference to `shared_variable'
+/tools/Xilinx/Vitis/2023.1/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/bin/arm-xilinx-eabi/arm-xilinx-eabi-ld.real: /home/neutrino/work/ethernet-data-transfer/trigger/Debug/../src/helloworld.c:60: undefined reference to `shared_variable'
+collect2.real: error: ld returned 1 exit status
+make[1]: *** [makefile:43: trigger.elf] Error 1
+make: *** [makefile:34: all] Error 2

@@ -4,6 +4,7 @@ import struct
 import h5py
 import numpy as np
 import signal, sys
+from time import time_ns
 
 """
 @todo Update FPGA to output timestamps
@@ -43,6 +44,9 @@ class DAQ:
         self.socket = None
         self.connected = False
         self.frame_count = 0
+        self.last_frame = 0
+        self.suppress_pll_errors = True
+        self.supress_chip_errors = True
 
         # Frame size in bytes
         self.frame_size = (
@@ -121,14 +125,14 @@ class DAQ:
         raise SystemExit
 
     def download_frame(self):
-        buffer = b""
+        buffer = bytearray()
         while len(buffer) < self.frame_size:
             chunk = self.socket.recv(self.frame_size - len(buffer))
             if not chunk:
                 print("Connection closed by remote.")
-                return
-            buffer += chunk
-        return buffer
+                return None
+            buffer.extend(chunk)
+        return bytes(buffer)
 
     def unpack_buffer(self, buffer):
         offset = self.timestamp_header * self.BYTES_PER_SAMPLE
@@ -142,6 +146,8 @@ class DAQ:
         new_n = old_n + voltages.shape[0]
         self.data_ds.resize(new_n, axis=0)
         self.data_ds[old_n:new_n] = voltages
+
+        self.data_ds.flush()
 
         # Handle timestamps
         if self.timestamp_header:
@@ -162,7 +168,14 @@ class DAQ:
 
         try:
             while stop_event is None or not stop_event.is_set():
+                start_time = time_ns()
+                if self.last_frame != 0:
+                    print(
+                        f"Time Since Last Frame: {(time_ns() - start_time) * pow(10, -9)} s"
+                    )
                 buffer = self.download_frame()
+                end_time = time_ns()
+                print(f"Download Time: {(end_time - start_time) * pow(10, -9)} s")
 
                 words, offset = self.unpack_buffer(buffer)
                 # print(words)
@@ -174,16 +187,20 @@ class DAQ:
                     row = []
                     for c in range(self.channels):
                         code = words[i + c]
-                        if not self.pll_settled(code):
+                        if not self.pll_settled(code) and not self.suppress_pll_errors:
                             print("PLL IS NOT LOCKED")
-                        if not self.no_chip_error(code):
+                        if (
+                            not self.no_chip_error(code)
+                            and not self.supress_chip_errors
+                        ):
                             print("CHIP ERROR")
                         row.append(self.convert_to_voltage(code))
                     rows.append(row)
 
                 voltages = np.array(rows, dtype=np.float32)
-                print(voltages)
+                # print(voltages)
                 self.write_data(voltages, buffer, offset)
+                self.last_frame = time_ns()
 
         except KeyboardInterrupt:
             print("\nInterrupted by user.")
