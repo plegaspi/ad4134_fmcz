@@ -9,9 +9,11 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include <math.h>
+#include <parameters.h>
 
-#include "../parameters.h"
 #include "ad4134/ad713x.h"
+#define USE_PER_BUFFER_FLAGS
+#include "shared_addresses.h"
 
 #define THREAD_STACKSIZE 1024
 #define MAX_CONNECTIONS 1
@@ -32,37 +34,42 @@ void print_echo_app_header(void *arg)
                         "$ nc <board_ip> 7");
 }
 
+static inline void dmb_ld(void){ __asm__ volatile("dmb ish" ::: "memory"); }
+static inline void dmb_st(void){ __asm__ volatile("dmb ishst" ::: "memory"); }
+
+
 void process_stream_request(void *p)
 {
-	int sd = *(int *)p;
+    int sd = *(int *)p;
 
-	while (1) {
-		if (fill_buffer() != 0) {
-		    xil_printf("SPI/DMA error, aborting send\r\n");
-		    break;
-		}
+    for (;;) {
+        while (BUF_READY0 == 0u && BUF_READY1 == 0u) {
+        }
 
-		Xil_DCacheInvalidateRange((INTPTR)adc_buffers[buffer_idx], SAMPLE_DATA * sizeof(uint32_t));
+        dmb_ld();
 
 
-		/*xil_printf("Frame size = %d bytes\r\n",
-		           SAMPLE_DATA * sizeof(uint32_t));*/
+        uint32_t which = (BUF_READY0 ? 0u : 1u);
+        volatile uint32_t *src = shm_buf_by_sel(which);
 
 
-		int sent = lwip_send(sd,  (const void *)adc_buffers[buffer_idx], SAMPLE_DATA * sizeof(uint32_t), 0);
-		if (sent <= 0) {
-			xil_printf("Client disconnected or error. Closing socket.\r\n");
-			break;
-		}
-		//buffer_idx ^= 1;
-		//sys_check_timeouts();
-		//vTaskDelay(pdMS_TO_TICKS(0));
-	}
+        Xil_DCacheInvalidateRange((UINTPTR)src, ADC_BYTES);
 
-	lwip_close(sd);
-	vTaskDelete(NULL);
+        int sent = lwip_send(sd, (const void *)src, ADC_BYTES, 0);
+        if (sent <= 0) {
+            xil_printf("Client disconnected or error. Closing socket.\r\n");
+            break;
+        }
+
+
+        dmb_st();
+        if (which == 0u) BUF_READY0 = 0u; else BUF_READY1 = 0u;
+
+    }
+
+    lwip_close(sd);
+    vTaskDelete(NULL);
 }
-
 void echo_application_thread()
 {
 	int sock;
