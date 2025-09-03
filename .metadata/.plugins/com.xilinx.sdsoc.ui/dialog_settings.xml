@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item key="sdx.custom.platform.repository.locations" value="/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard"/>
-	<item key="sdx.custom.platform.repository.last.directory.dialog.location" value="/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard"/>
+	<item key="sdx.custom.platform.repository.locations" value="/home/neutrino/work/ethernet-data-transfer/zedboard/export/zedboard;/home/neutrino/Desktop/temp/ad4134_fmcz/zedboard/export/zedboard"/>
+	<item key="sdx.custom.platform.repository.last.directory.dialog.location" value="/home/neutrino/Desktop/temp/ad4134_fmcz/zedboard/export/zedboard"/>
 </section>

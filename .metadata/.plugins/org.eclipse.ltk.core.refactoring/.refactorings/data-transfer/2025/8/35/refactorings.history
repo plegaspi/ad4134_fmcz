@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;src&apos; to &apos;data-transfer&apos;" description="Move &apos;src&apos; to &apos;data-transfer&apos;" destination="/data-transfer" element1="/daq/src" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1756337289655" updateReferences="true"/>
+</session>

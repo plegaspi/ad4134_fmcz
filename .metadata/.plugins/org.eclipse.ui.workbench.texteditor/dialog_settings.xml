@@ -8,6 +8,14 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="no_os_spi_platform_ops"/>
+			<item value="spi_engine_init"/>
+			<item value="init"/>
+			<item value="Spi engine"/>
+			<item value="rx"/>
+			<item value="x"/>
+			<item value="tx"/>
+			<item value="ad7134"/>
 			<item value="invalidate"/>
 			<item value="LWIP_NETCONN"/>
 			<item value="netconn"/>
@@ -15,14 +23,6 @@
 			<item value="HEADER"/>
 			<item value="header"/>
 			<item value=".rx"/>
-			<item value="rx"/>
-			<item value=".rx_add"/>
-			<item value="XPAR_PS7_CORTEXA9_0_CPU_CLK_FREQ_HZ"/>
-			<item value="glOBALTIMER"/>
-			<item value="gl"/>
-			<item value="CLK_FREq"/>
-			<item value="XPAR_CPU_CORTEXA9_0_TIMESTAMP_CLK_FREQ_HZ"/>
-			<item value="main"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="data-collection" location="/home/neutrino/Desktop/temp/ad4134_fmcz/data-collection" platform="/home/neutrino/Desktop/temp/ad4134_fmcz/zedboard/export/zedboard/zedboard.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="data-collection_system" sysConfig="zedboard" runtime="C/C++" cpu="trigger" cpuInstance="ps7_cortexa9_1" os="standalone" mssSignature="aee41abfeb828af88840f27d516eba3c">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1106852626">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.1798809718" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>
